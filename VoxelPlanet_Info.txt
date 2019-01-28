@@ -1,0 +1,14 @@
+프로젝트 : VoxelPlanet
+기본내용 : 복셀을 이용한 게임 제작
+
+개발기간 : 3개월
+	2018.04 ~ 2018.04 : VoxelMap Generator
+	2018.07 ~ 2018.08 : Editor VoxelPlanet, Editor ItemManager
+	2018.12 ~ 2019.01 : Make Game Scene
+
+구성 
+	Editor	: 에디터 기능을 위해 작성한 스크립트
+	Script	: Game 제작을 위해 작성한 스크립트
+	Shader	: Game내 Planet 표현의 위해 작성한 Shader
+
+주소 : https://hns17.tistory.com/entry/VoxelPlanet-Unity?category=403828
