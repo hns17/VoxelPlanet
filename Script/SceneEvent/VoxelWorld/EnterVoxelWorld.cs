@@ -35,7 +35,7 @@ public class EnterVoxelWorld : MonoBehaviour {
         //FIrst Event : 첫번째 이벤트 카메라를 셋팅하고 게이트를 연다.
         //Event가 끝나면 Second Event 시작
         eventCamOne.SetActive(true);
-        yield return new WaitForSeconds(2.0f);
+        yield return Yields.WaitSeconds(2.0f);
         psGate.Play();
         
         iTween.ValueTo(this.gameObject, 
@@ -99,7 +99,7 @@ public class EnterVoxelWorld : MonoBehaviour {
     {
         //큐브가 플레이어의 낙하 방향으로 하강
         iTween.MoveTo(cube, iTween.Hash("position", balloon.transform.position, "time", 8));
-        yield return new WaitForSeconds(1.5f);
+        yield return Yields.WaitSeconds(1.5f);
         psCube.Stop();
 
         //큐브가 플레이어를 따라잡으면 2번 카메라 셋 후 열기구 애니메이션 실행
@@ -113,7 +113,7 @@ public class EnterVoxelWorld : MonoBehaviour {
     */
     IEnumerator LandingEvent()
     {
-        yield return new WaitForSeconds(1f);
+        yield return Yields.WaitSeconds(1f);
 
         Destroy(eventCamOne);
         Destroy(eventCamTwo);
@@ -126,7 +126,7 @@ public class EnterVoxelWorld : MonoBehaviour {
     */
     IEnumerator EndEvent()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return Yields.WaitSeconds(1.0f);
         balloon.SetActive(false);
         yield return ParticleManager.Play(psBalloon);
         WeaponManager.Instance.SetCubeWeapon();

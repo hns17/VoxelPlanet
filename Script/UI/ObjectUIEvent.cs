@@ -43,7 +43,7 @@ public class ObjectUIEvent : MonoBehaviour {
         var tfCam = Camera.main.transform;
         var info = PlayerInfo.Instance;
         while (true) {
-            yield return new WaitForSeconds(0.1f);
+            yield return Yields.WaitSeconds(0.1f);
             
             var pos = info.transform.position;
             if (Vector3.Distance(transform.position, pos) > dist) {

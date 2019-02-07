@@ -110,7 +110,7 @@ public class VoxelPlanetWorldMapUIControl : MonoBehaviour {
 
         //선택한 Slot 위치 가져오기
         for (int i=0; i<slots.Length; i++) {
-            if (selectSlot.Equals(slots[i].transform.parent.gameObject)) {
+            if (selectSlot == slots[i].transform.parent.gameObject) {
                 idx += i;
                 break;
             }

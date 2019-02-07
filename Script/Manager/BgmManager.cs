@@ -25,7 +25,7 @@ public class BgmManager : MonoSingleton<BgmManager> {
         @param  info : 출력할 배경음 정보
     */
     private IEnumerator PrintBgmInfo(BgmInfo info) {
-        yield return new WaitForSeconds(3.0f);
+        yield return Yields.WaitSeconds(3.0f);
 
         string txt = "BGM INFO\n" +
                      "Artist : " + info.artist + "\n" +

@@ -55,7 +55,7 @@ public class HitUIEvent : MonoBehaviour {
     */
     IEnumerator DisableHitText(GameObject hitText, float time)
     {
-        yield return new WaitForSeconds(time);
+        yield return Yields.WaitSeconds(time);
         hitText.SetActive(false);
     }
 

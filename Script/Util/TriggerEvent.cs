@@ -24,7 +24,7 @@ public class TriggerEvent : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!triggerEvent.Equals(Event.ENTER))
+        if (triggerEvent != Event.ENTER)
             return;
 
         PlayBehaviour();
@@ -32,7 +32,7 @@ public class TriggerEvent : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (!triggerEvent.Equals(Event.STAY))
+        if (triggerEvent != Event.STAY)
             return;
 
         PlayBehaviour();
@@ -40,7 +40,7 @@ public class TriggerEvent : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (!triggerEvent.Equals(Event.EXIT))
+        if (triggerEvent != Event.EXIT)
             return;
 
         PlayBehaviour();
@@ -52,9 +52,9 @@ public class TriggerEvent : MonoBehaviour {
     */
     private void PlayBehaviour()
     {
-        if (behaviour.Equals(Behaviour.TARGET_ENABLE))
+        if (behaviour== Behaviour.TARGET_ENABLE)
             SetTargetActiveState(true);
-        else if (behaviour.Equals(Behaviour.TARGET_ENABLE))
+        else if (behaviour == Behaviour.TARGET_ENABLE)
             SetTargetActiveState(false);
         else
             RemoveTarget();
@@ -66,12 +66,12 @@ public class TriggerEvent : MonoBehaviour {
     */
     private void SetTargetActiveState(bool state)
     {
-        if (targets.Equals(null))
+        if (targets == null)
             return;
 
         foreach(var target in targets)
         {
-            if (!target.Equals(null))
+            if (target != null)
                 target.SetActive(state);
         }
     }
@@ -82,12 +82,12 @@ public class TriggerEvent : MonoBehaviour {
     */
     private void RemoveTarget()
     {
-        if (targets.Equals(null))
+        if (targets == null)
             return;
 
         foreach (var target in targets)
         {
-            if(!target.Equals(null))
+            if(target!=null)
                 GameObject.Destroy(target);
         }
     }

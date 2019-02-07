@@ -17,15 +17,15 @@ public class EnemyAttack : MonoBehaviour
 {
     //일격필살
     [SerializeField] private bool deathAttack;
-    
+
     //공격 범위
     [SerializeField] private float attackRange = 1f;
     //공격 속도
-    [SerializeField] private float timeBetweenAttacks = 0.5f;    
-    
-    
-    private Animator    anim;       //몬스터 애니메이터                     
-    private PlayerInfo  player;     //플레이어 정보
+    [SerializeField] private float timeBetweenAttacks = 0.5f;
+
+
+    private Animator anim;       //몬스터 애니메이터                     
+    private PlayerInfo player;     //플레이어 정보
     private ObjectHealth health;
 
     private void Awake()
@@ -38,10 +38,17 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator Start()
     {
         //몬스터가 죽으면 루틴 해제
-        while (!health.IsDeath) {
-            if (!player.State.Equals(PlayerInfo.PlayerState.DEATH))
+        while (true)
+        {
+            if (health != null)
+            {
+                if (health.IsDeath)
+                    break;
+            }
+
+            if (player.State != PlayerInfo.PlayerState.DEATH)
                 Attack();
-            yield return new WaitForSeconds(timeBetweenAttacks);
+            yield return Yields.WaitSeconds(timeBetweenAttacks);
         }
     }
 
@@ -56,7 +63,8 @@ public class EnemyAttack : MonoBehaviour
         var distPlayer = Vector3.Distance(player.transform.position, transform.position);
 
         //공격범위 체크
-        if (distPlayer <= attackRange) {
+        if (distPlayer <= attackRange)
+        {
             transform.LookAt(player.transform);
             anim.Play("Attack1");
 

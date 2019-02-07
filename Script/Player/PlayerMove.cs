@@ -129,17 +129,16 @@ public class PlayerMove : MonoBehaviour {
     {
 
         var state = PlayerInfo.Instance.State;
-
-        if (state.Equals(PlayerInfo.PlayerState.JUMP) ||
-            state.Equals(PlayerInfo.PlayerState.LANDING))
+        if (state == PlayerInfo.PlayerState.JUMP ||
+            state == PlayerInfo.PlayerState.LANDING)
         {
             moveDirection = Vector3.zero;
             return;
         }
-        
+
         if (Input.GetKey(KeyCode.Space))
             PlayerAnimation.Instance.Jump();
-        
+
     }
     
     /**

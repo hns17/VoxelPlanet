@@ -149,7 +149,7 @@ public class PlayerAnimation : MonoSingleton<PlayerAnimation> {
 
         //death particle 선택
         ParticleSystem psDeath = psDeathPolygon;
-        if (info.Type.Equals(PlayerInfo.ModelType.VOXEL))
+        if (info.Type == PlayerInfo.ModelType.VOXEL)
             psDeath = psDeathVoxel;
 
         //death sound 재생
@@ -304,10 +304,10 @@ public class PlayerAnimation : MonoSingleton<PlayerAnimation> {
         anim.Play(name);
 
         while (!anim.GetCurrentAnimatorStateInfo(0).IsName(name))
-            yield return new WaitForEndOfFrame();
+            yield return Yields.EndOfFrame;
         
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < endTime)
-            yield return new WaitForEndOfFrame();
+            yield return Yields.EndOfFrame;
 
         PlayerInfo.Instance.IsLock = false;
     }

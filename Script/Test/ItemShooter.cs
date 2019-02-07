@@ -21,7 +21,7 @@ public class ItemShooter : MonoBehaviour {
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return Yields.WaitSeconds(0.5f);
 
             int idx = Random.Range(1, itemList.Count);
             var rigid = Instantiate(itemList[idx], transform.position, Quaternion.identity).

@@ -40,7 +40,7 @@ public class ParticleManager {
 
         //파티클이 종료되면 멈춘다.
         while (ps.isPlaying)
-            yield return new WaitForEndOfFrame();
+            yield return Yields.EndOfFrame;
         
     }
 
@@ -59,7 +59,7 @@ public class ParticleManager {
 
             ps.Simulate(duration, true, true);
 
-            yield return new WaitForEndOfFrame();
+            yield return Yields.EndOfFrame;
         }
         ps.Simulate(0, true, true);
 

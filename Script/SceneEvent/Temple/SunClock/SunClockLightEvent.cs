@@ -34,7 +34,7 @@ public class SunClockLightEvent : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //메시지 표시 후 이벤트 코루틴 시작
-        if (other.tag.Equals("Player"))
+        if (other.CompareTag("Player"))
             NotifyMessageEvent.Instance.PrintMainText("눌러본다");
 
         StartCoroutine(coroutine);
@@ -43,7 +43,7 @@ public class SunClockLightEvent : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         //메시지 해제 후 이벤트 코루틴 정지
-        if (other.tag.Equals("Player"))
+        if (other.CompareTag("Player"))
             NotifyMessageEvent.Instance.MainTextDisable();
 
         StopCoroutine(coroutine);

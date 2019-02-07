@@ -57,7 +57,7 @@ public class NPCAnimation : MonoBehaviour {
             float loopTime = playTime;
 
             //랜덤 모드 일 경우 재생할 AniIdx 랜덤하게 변경
-            if (playMode.Equals(PlayMode.RANDOM))
+            if (playMode == PlayMode.RANDOM)
                 aniIdx = Random.Range(0, npcAniName.Length - 1);
 
             //Play Time 체크
@@ -65,12 +65,12 @@ public class NPCAnimation : MonoBehaviour {
             while ((loopTime -= Time.deltaTime) > 0) {
 
                  npcAnim.Play(npcAniName[aniIdx]);
-                 yield return new WaitForEndOfFrame();
+                 yield return Yields.EndOfFrame;
             }
             npcAnim.SetBool("IsPlay", false);
 
             //플레이가 끝나면 대기시간 만큼 대기
-            yield return new WaitForSeconds(waitTime);
+            yield return Yields.WaitSeconds(waitTime);
         }
     }
     

@@ -86,7 +86,7 @@ public class InvisibleEvent : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         //이벤트 오브젝트에 플레이어가 진입하면 이벤트 코루틴 활성화
-        if (other.tag.Equals("Player")) {
+        if (other.CompareTag("Player")) {
             NotifyText();
             StartCoroutine(updateEvent);
         }
@@ -95,7 +95,7 @@ public class InvisibleEvent : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         //이벤트 오브젝트에서 플레이어가 멀어지면 이벤트 코루틴 비활성화
-        if (other.tag.Equals("Player")) {
+        if (other.CompareTag("Player")) {
             NotifyMessageEvent.Instance.MainTextDisable();
             StopCoroutine(updateEvent);
         }

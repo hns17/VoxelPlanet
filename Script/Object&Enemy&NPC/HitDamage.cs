@@ -34,7 +34,7 @@ public class HitDamage : MonoBehaviour {
     {
         var randomDamage = Random.Range(0, 99);
         //몬스터에게 Damage
-        if (hitTarget.Equals(HitTarget.ENEMY))
+        if (hitTarget == HitTarget.ENEMY)
             enemyMng.EnemyDamage(other.gameObject, damage + randomDamage);
         //Player에게 Damage
         else

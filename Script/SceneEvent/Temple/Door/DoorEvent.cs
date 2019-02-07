@@ -18,7 +18,7 @@ public class DoorEvent : MonoBehaviour {
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.tag.Equals("Player"))
+        if (!other.CompareTag("Player"))
             return;
 
         //문이 잠긴 경우 메시지를 보여준다.
@@ -36,7 +36,7 @@ public class DoorEvent : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.tag.Equals("Player"))
+        if (!other.CompareTag("Player"))
             return;
 
         //메시지를 제거한다.

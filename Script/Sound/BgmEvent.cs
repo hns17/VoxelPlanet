@@ -51,14 +51,12 @@ public class BgmEvent : MonoBehaviour {
 
 	// Use this for initialization
 	private void Start () {
-        if (playMode.Equals(PlayMode.START_PLAY))
-        {
+        if (playMode == PlayMode.START_PLAY) {
             BgmManager.Instance.BgmPlay(bgmInfo);
             if (isRemove)
                 Destroy(gameObject);
         }
-        else if (playMode.Equals(PlayMode.START_CHANGE))
-        {
+        else if (playMode == PlayMode.START_CHANGE) {
             BgmManager.Instance.BgmChange(bgmInfo);
             if (isRemove)
                 Destroy(gameObject);

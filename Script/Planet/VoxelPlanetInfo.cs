@@ -328,7 +328,7 @@ public abstract class VoxelPlanet : MonoBehaviour
                         Block newBlock = area.BuildBlock(new Vector3Int(chunk.pos.x + x, chunk.pos.y + y, chunk.pos.z + z));
 
                         //재구성 block이 waterBlock인 경우 공기 블럭인 경우만 변경 가능
-                        if (newBlock.GetType().Equals(typeof(BlockWater)) && block.IsSolid() != -1)
+                        if (newBlock.GetType() == typeof(BlockWater) && block.IsSolid() != -1)
                             continue;
 
                         chunk.SetBlock(x, y, z, newBlock);

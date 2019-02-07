@@ -76,7 +76,7 @@ public class ObjectHealth : MonoBehaviour
                 다른 오브젝트나 이벤트 등을 위해 확장이 필요
     */
     void Death() {
-        if (tag.Equals("Player"))
+        if (this.CompareTag("Player"))
             PlayerAnimation.Instance.Death();
         else
             anim.Play("Dead");

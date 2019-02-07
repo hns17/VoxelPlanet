@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     //몬스터의 이동 AI
     //ATTACK    : isAttack이 활성화되면 끝까지 쫓아간다.
     //RANGE     : 일정 거리내에 들어오면 쫓아간다.
-    public enum EnemyBehaviour { FOLLOW, RANGE}
+    public enum EnemyBehaviour { FOLLOW, RANGE }
 
     [SerializeField] private EnemyBehaviour behaviour = EnemyBehaviour.FOLLOW;
 
@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform player;
     private NavMeshAgent nav;
 
-    private Vector3    originPos;   //초기 위치 정보
+    private Vector3 originPos;   //초기 위치 정보
     private Quaternion originRot;   //초기 회전 정보
 
     private ObjectHealth health;
@@ -43,10 +43,11 @@ public class EnemyMovement : MonoBehaviour
     public bool IsFollow
     {
         set { isFollow = value; }
-        get { return isFollow;  }
+        get { return isFollow; }
     }
 
-    private void Awake() {
+    private void Awake()
+    {
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
         health = GetComponent<ObjectHealth>();
@@ -58,21 +59,30 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator Start()
     {
-        if (behaviour.Equals(EnemyBehaviour.FOLLOW))
+        if (behaviour == EnemyBehaviour.FOLLOW)
             yield return ConditionFollow();
-        else if (behaviour.Equals(EnemyBehaviour.RANGE))
+        else if (behaviour == EnemyBehaviour.RANGE)
             yield return ConditionRange();
     }
-    
+
     /**
         @brief  isFollow 변수가 True면 몬스터가 죽을때까지 쫓아간다.
     */
     private IEnumerator ConditionFollow()
     {
-        while (!health.IsDeath) {
+
+        while (true)
+        {
             yield return null;
 
-            if (isFollow) {
+            if (health != null)
+            {
+                if (health.IsDeath)
+                    break;
+            }
+
+            if (isFollow)
+            {
                 var distPlayer = Vector3.Distance(transform.position, player.transform.position);
                 MoveEnemy(player.position);
 
@@ -80,7 +90,8 @@ public class EnemyMovement : MonoBehaviour
                 if (distPlayer < range)
                     nav.speed = moveSpeed * 2;
             }
-            else {
+            else
+            {
                 MoveEnemy(originPos, true);
             }
         }
@@ -92,12 +103,19 @@ public class EnemyMovement : MonoBehaviour
     */
     private IEnumerator ConditionRange()
     {
-        while (!health.IsDeath) {
+        while (true)
+        {
             yield return null;
-            
+
+            if (health != null)
+            {
+                if (health.IsDeath)
+                    break;
+            }
+
             var distPlayer = Vector3.Distance(transform.position, player.position);
 
-            if (distPlayer <= range && !PlayerInfo.Instance.State.Equals(PlayerInfo.PlayerState.DEATH))
+            if (distPlayer <= range && PlayerInfo.Instance.State != PlayerInfo.PlayerState.DEATH)
                 MoveEnemy(player.position);
             else
                 MoveEnemy(originPos, true);
@@ -108,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
         @brief  목표를 향해 이동한다.
         @param  target : 목표지점, isReturn : 원래 위치로 돌아가는 중인가?
     */
-    private void MoveEnemy(Vector3 target,  bool isReturn = false)
+    private void MoveEnemy(Vector3 target, bool isReturn = false)
     {
         //목표 지점으로 이동
         nav.speed = moveSpeed;
@@ -116,17 +134,19 @@ public class EnemyMovement : MonoBehaviour
         nav.SetDestination(target);
 
         //도착하지 못했으면 
-        if (nav.remainingDistance > nav.stoppingDistance) {
+        if (nav.remainingDistance > nav.stoppingDistance)
+        {
             anim.SetFloat("Distance", nav.remainingDistance);
         }
         //도착 했으면 
-        else {
+        else
+        {
             //원래 위치로 돌아온 경우 처음에 바라보던 방향으로 회전
             if (isReturn)
                 transform.localRotation = originRot;
 
             anim.SetFloat("Distance", 0f);
         }
-        
+
     }
 }

@@ -222,7 +222,7 @@ public class TextEffect : BaseMeshEffect {
     {
         yield return PlayEffectTime();
         currentPlayTime = endPlayTime;
-        yield return new WaitForSeconds(3f);
+        yield return Yields.WaitSeconds(3f);
         yield return ReverceEffectTime();
     }
 
@@ -232,10 +232,10 @@ public class TextEffect : BaseMeshEffect {
     IEnumerator PlayTextEffect()
     {
         currentPlayTime = 0.0f;
-        if (effectMode.Equals(EffectMode.PLAY)) {
+        if (effectMode == EffectMode.PLAY) {
             yield return PlayEffectTime();
         }
-        else if (effectMode.Equals(EffectMode.REVERSE)) {
+        else if (effectMode == EffectMode.REVERSE) {
             currentPlayTime = endPlayTime;
             yield return  ReverceEffectTime();
         }

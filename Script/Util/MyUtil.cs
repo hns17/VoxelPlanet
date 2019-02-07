@@ -178,31 +178,19 @@ public class MyUtil
     }
 
 
-    public static bool HitTestMouseLeft(float dist = Mathf.Infinity, int layerMask = -1)
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            return Physics.Raycast(ray, dist, layerMask);
-        }
+    //public static GameObject LoadPrefab(string path)
+    //{
+    //    var assetPath = Path.Combine(Application.dataPath, path);
+    //    Debug.Log(Path.Combine(Application.dataPath, assetPath));
+    //    var asset = AssetBundle.LoadFromFile(assetPath);
 
-        return false;
-    }
+    //    if (asset == null)
+    //    {
+    //        Debug.Log("Load Failed : " + assetPath);
+    //        return null;
+    //    }
 
-
-    public static GameObject LoadPrefab(string path)
-    {
-        var assetPath = Path.Combine(Application.dataPath, path);
-        Debug.Log(Path.Combine(Application.dataPath, assetPath));
-        var asset = AssetBundle.LoadFromFile(assetPath);
-
-        if (asset == null)
-        {
-            Debug.Log("Load Failed : " + assetPath);
-            return null;
-        }
-
-        return asset.LoadAsset<GameObject>("");
-    }
+    //    return asset.LoadAsset<GameObject>("");
+    //}
 
 }

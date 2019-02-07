@@ -47,9 +47,9 @@ public class SimpleDungeonExit : MonoBehaviour {
             yield return null;
 
         NotifyMessageEvent.Instance.PrintMainText("포트폴리오는 여기까지 입니다.", 2);
-        yield return new WaitForSeconds(2f);
+        yield return Yields.WaitSeconds(2f);
         NotifyMessageEvent.Instance.PrintMainText("감사합니다.", 2);
-        yield return new WaitForSeconds(3f);
+        yield return Yields.WaitSeconds(3f);
         SceneControlManager.Instance.LoadScene("Title");
     }
 }

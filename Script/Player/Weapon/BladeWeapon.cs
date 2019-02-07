@@ -26,7 +26,7 @@ public class BladeWeapon : MonoBehaviour {
     {
         var info = PlayerInfo.Instance;
         //플레이어가 공격 중인 경우
-        if (info.State.Equals(PlayerInfo.PlayerState.ATTACK))
+        if (info.State == PlayerInfo.PlayerState.ATTACK)
         {
             //현재 재생 클립을 가져온다.
             var playClip = info.Anim.GetCurrentAnimatorClipInfo(1);
@@ -52,7 +52,7 @@ public class BladeWeapon : MonoBehaviour {
             damage += 100;
         else if (currentClip.Equals("Thrust"))
             damage += 200;
-        else if (currentClip.Equals("CircleSlash"))
+        else if (currentClip.Equals( "CircleSlash"))
             damage += 300;
         return damage;
     }
@@ -64,7 +64,7 @@ public class BladeWeapon : MonoBehaviour {
             anim.SetBool("IsBladeAttack", false);
 
 
-        if (PlayerInfo.Instance.State.Equals(PlayerInfo.PlayerState.ATTACK))
+        if (PlayerInfo.Instance.State == PlayerInfo.PlayerState.ATTACK)
             hitParticle.SetActive(true);
         else
             hitParticle.SetActive(false);

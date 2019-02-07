@@ -267,7 +267,7 @@ public class Chunk : MonoBehaviour {
                 for (int z = 0; z < chunkSize; z++)
                 {
                     var block = GetBlock(x, y, z);
-                    if (block.GetType().Equals(typeof(BlockWater)))
+                    if (block.GetType() == typeof(BlockWater))
                         waterMeshData = block.Blockdata(this, x, y, z, waterMeshData);
                     else
                         meshData = block.Blockdata(this, x, y, z, meshData);

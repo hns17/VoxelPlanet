@@ -135,7 +135,7 @@ public class SceneControlManager : MonoSingleton<SceneControlManager> {
 
         //로딩 후 CurrentIndex 변경
         foreach (var keyvaluepair in sceneList) {
-            if (Object.ReferenceEquals(keyvaluepair.Value, sceneName)) {
+            if (keyvaluepair.Value ==  sceneName) {
                 currentSceneIndex = keyvaluepair.Key;    
                 break;
             }

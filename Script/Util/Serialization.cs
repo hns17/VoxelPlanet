@@ -223,7 +223,7 @@ public static class Serialization
         var scene = SceneManager.GetActiveScene();
         string savePath = scene.path;
 
-        if (scene.path.Equals(""))
+        if (scene.path == "")
             savePath = "Assets/MapData/CurrentPlanetInfo.planet";
         else
             savePath=Path.GetDirectoryName(savePath) +"/"  + Path.GetFileNameWithoutExtension(savePath) + ".planet";

@@ -71,7 +71,7 @@ public class Room7Event : MonoBehaviour {
         //Rebuild Player
         PlayerAnimation.Instance.Reconstruction();
 
-        yield return new WaitForSeconds(4f);
+        yield return Yields.WaitSeconds(4f);
         //=================== End Firset Event =======================//
 
         //=================== Start Second Event =======================//
@@ -100,17 +100,17 @@ public class Room7Event : MonoBehaviour {
         PlayerInfo.Instance.Anim.Play("Fall_Second");
 
         eventCamFirst.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        yield return Yields.WaitSeconds(2.5f);
 
         PlayerInfo.Instance.Rigid.isKinematic = true;
         PlayerInfo.Instance.IsLock = true;
 
-        yield return new WaitForSeconds(1.0f);
+        yield return Yields.WaitSeconds(1.0f);
         eventCamSecond.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
+        yield return Yields.WaitSeconds(1.0f);
         yield return ParticleManager.Reverse(cubeParticle, 1f);
         cubeObj.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return Yields.WaitSeconds(0.5f);
         
         cubeObj.SetActive(false);
         yield return ParticleManager.Play(cubeParticle);
@@ -119,7 +119,7 @@ public class Room7Event : MonoBehaviour {
         gateObj.SetActive(true);
         
         iTween.MoveAdd(gateObj, iTween.Hash("z", 1, "time", 3, "easetype", iTween.EaseType.linear));
-        yield return new WaitForSeconds(2.5f);
+        yield return Yields.WaitSeconds(2.5f);
         //=================== End ThirtEvent =======================//
 
         SceneControlManager.Instance.NextScene();

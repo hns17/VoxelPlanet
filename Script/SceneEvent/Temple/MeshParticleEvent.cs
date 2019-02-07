@@ -37,7 +37,7 @@ public class MeshParticleEvent : MonoBehaviour {
             shape.mesh = meshs[idx];
 
             yield return ParticleManager.Play(ps);
-            yield return new WaitForSeconds(3f);
+            yield return Yields.WaitSeconds(3f);
         }
     }
 }
